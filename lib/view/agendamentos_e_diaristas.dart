@@ -35,7 +35,7 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Diaristas e Agendamentos'),
+        title: Text('Agendamentos e Diaristas'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -61,7 +61,7 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
                     },
                   );
                 } else {
-                  return Text('No agendamentos found');
+                  return Text('Sem agendamentos');
                 }
               },
             ),
