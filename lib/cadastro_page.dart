@@ -6,6 +6,7 @@ import 'package:agilizadiarista/controller/cadastro_controller.dart';
 import 'package:agilizadiarista/Model/cadastro_model.dart';
 import 'package:agilizadiarista/controller/homeParceiro_controller.dart';
 import 'package:agilizadiarista/Model/homeParceiro_model.dart';
+import 'package:agilizadiarista/view/agendamentos_e_diaristas.dart';
 
 class CadastroPage extends StatefulWidget {
   final User currentUser;
@@ -65,7 +66,7 @@ class _CadastroPageState extends State<CadastroPage> {
       // Redirecionar para a página apropriada com base no tipo de cadastro
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => tipoUsuario == "Parceiro" ? ParceiroHomePage(controller: controller) : const ClienteHomePage()),
+        MaterialPageRoute(builder: (context) => tipoUsuario == "Parceiro" ? AgendamentosEDiaristasView() : const ClienteHomePage()),
       );
     } catch (e) {
       // Mostrar mensagem de erro
@@ -131,7 +132,7 @@ class _CadastroPageState extends State<CadastroPage> {
                   });
                 }
               },
-              items: <String>['Parceiro', 'Cliente']
+              items: <String>['Cliente', 'Parceiro']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,

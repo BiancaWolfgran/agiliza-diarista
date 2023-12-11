@@ -1,3 +1,4 @@
+import 'package:agilizadiarista/view/agendamentos_e_diaristas.dart';
 import 'package:flutter/material.dart';
 import 'package:agilizadiarista/cadastro_page.dart';
 import 'package:agilizadiarista/controller/login_controller.dart';
@@ -63,13 +64,14 @@ class LoginView extends StatelessWidget {
                         context,
                         MaterialPageRoute(builder: (context) => ParceiroHomePage(controller: controller))
                     );
-                        } else if (userType == 'Cliente') {
+                  } else if (userType == 'Cliente') {
                     Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const ClienteHomePage()));
+                        MaterialPageRoute(builder: (context) => AgendamentosEDiaristasView()));
                   } else {
                     // Tratar falha no login ou outros casos
-                    print('ALOOU');
+                    print('Usertype:');
+                    print(userType ?? "null");
                     User? currentUser = FirebaseAuth.instance.currentUser;
                     if (currentUser != null) {
                       Navigator.pushReplacement(

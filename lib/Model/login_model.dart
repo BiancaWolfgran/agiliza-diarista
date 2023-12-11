@@ -32,7 +32,7 @@ class LoginModel {
     var userDoc = await _firestore.collection('users').doc(user.uid).get();
     if (userDoc.exists) {
       var data = userDoc.data();
-      return data?['type'] as String?;
+      return data?['tipoUsuario'] as String?;
     }
     return null;
   }
