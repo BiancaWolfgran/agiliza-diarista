@@ -5,7 +5,7 @@ import 'package:agilizadiarista/controller/cadastro_controller.dart';
 import 'package:agilizadiarista/model/cadastro_model.dart';
 import 'package:agilizadiarista/controller/homeParceiro_controller.dart';
 import 'package:agilizadiarista/model/homeParceiro_model.dart';
-import 'package:agilizadiarista/view/agendamentos_e_diaristas.dart';
+import 'package:agilizadiarista/view/agendamentos_e_diaristas_view.dart';
 
 class CadastroPage extends StatefulWidget {
   final User currentUser;

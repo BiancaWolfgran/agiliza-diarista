@@ -1,4 +1,4 @@
-import 'package:agilizadiarista/view/agendamentos_e_diaristas.dart';
+import 'package:agilizadiarista/view/agendamentos_e_diaristas_view.dart';
 import 'package:flutter/material.dart';
 import 'package:agilizadiarista/cadastro_page.dart';
 import 'package:agilizadiarista/controller/login_controller.dart';
