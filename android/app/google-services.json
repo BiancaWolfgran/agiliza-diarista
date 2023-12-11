@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "810267291243",
+    "project_id": "agilizadiarista",
+    "storage_bucket": "agilizadiarista.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810267291243:android:11c763fa67c7aa571c8b2e",
+        "android_client_info": {
+          "package_name": "diarista.agiliza.agilizadiarista"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810267291243-cfk7iig05ga5vpuuehicde9qib9avesb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "diarista.agiliza.agilizadiarista",
+            "certificate_hash": "5ae305dfe62d5aa25dab1ed5267d4bacedd30adb"
+          }
+        },
+        {
+          "client_id": "810267291243-nib388mlp081capfteh0lku3gdd6inuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "diarista.agiliza.agilizadiarista",
+            "certificate_hash": "480195ed6592eabf5b4c438c7980043942cab620"
+          }
+        },
+        {
+          "client_id": "810267291243-rrbp30af5rtqu5ejm45hv6aol6ldlqid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB81pIXqX_PZIydS-KJuDVbmy9aq3_CBWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810267291243-rrbp30af5rtqu5ejm45hv6aol6ldlqid.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "810267291243-t8a46su4kd2bu2ka2i495a2a528rl8d7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "diarista.agiliza.agilizadiarista"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

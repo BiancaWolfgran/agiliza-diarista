@@ -1,6 +1,6 @@
-# agiliza_diarista
+# agilizadiarista
 
-A new Flutter project.
+App para intermediação diaristas/clientes como TCC Unieuro 2/2023.
 
 ## Getting Started
 
