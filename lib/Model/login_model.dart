@@ -7,18 +7,20 @@ class LoginModel {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  String? getCurrentUserId() {
+    return _auth.currentUser?.uid;
+  }
+
   Future<User?> signInWithGoogle() async {
     final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
     if (googleAccount == null) {
       return null;
     }
-
     final GoogleSignInAuthentication googleAuth = await googleAccount.authentication;
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-
     final UserCredential userCredential = await _auth.signInWithCredential(credential);
     return userCredential.user;
   }
