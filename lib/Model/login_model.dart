@@ -8,14 +8,10 @@ class LoginModel {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<User?> signInWithGoogle() async {
-    print("•••••••• ENTERED ••••••");
     final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
-    print("•••••••• Oooops ••••••");
     if (googleAccount == null) {
-      print("•••••••• GOT HERE ••••••");
       return null;
     }
-    print("•••••••• PASS!!! ••••••");
 
     final GoogleSignInAuthentication googleAuth = await googleAccount.authentication;
     final AuthCredential credential = GoogleAuthProvider.credential(
