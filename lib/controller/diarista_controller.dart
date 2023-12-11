@@ -1,4 +1,4 @@
-import 'package:agilizadiarista/Model/diarista_model.dart';
+import 'package:agilizadiarista/model/diarista_model.dart';
 
 class DiaristaController {
   final model = DiaristaModel();

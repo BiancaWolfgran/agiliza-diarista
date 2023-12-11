@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:agilizadiarista/Model/login_model.dart';
+import 'package:agilizadiarista/model/login_model.dart';
 
 class LoginController {
   final LoginModel _model = LoginModel();

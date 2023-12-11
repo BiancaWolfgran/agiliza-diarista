@@ -1,4 +1,4 @@
-import 'package:agilizadiarista/Model/diarista_model.dart';
+import 'package:agilizadiarista/model/diarista_model.dart';
 import 'package:flutter/material.dart';
 
 class DiaristaDetailView extends StatelessWidget {

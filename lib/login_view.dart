@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:agilizadiarista/cadastro_page.dart';
 import 'package:agilizadiarista/controller/login_controller.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:agilizadiarista/homePage_Cliente.dart';
 import 'package:agilizadiarista/homePage_Parceiro.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:agilizadiarista/controller/homeParceiro_controller.dart';
-import 'package:agilizadiarista/Model/homeParceiro_model.dart';
+import 'package:agilizadiarista/model/homeParceiro_model.dart';
 
 class LoginView extends StatelessWidget {
   final LoginController _controller = LoginController();

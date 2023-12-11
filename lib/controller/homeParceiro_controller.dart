@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:agilizadiarista/Model/homeParceiro_model.dart';
-//import 'package:agilizadiarista/parceiroPages/agendaPage_parceiro.dart';
+import 'package:agilizadiarista/model/homeParceiro_model.dart';
 
 class HomeParceiroController with ChangeNotifier {
   final FirebaseAuth auth;

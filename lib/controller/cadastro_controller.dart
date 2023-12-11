@@ -1,6 +1,6 @@
-import 'package:agilizadiarista/Model/cadastro_model.dart';
+import 'package:agilizadiarista/model/cadastro_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../Model/agendamento_model.dart';
+import '../model/agendamento_model.dart';
 
 class CadastroController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

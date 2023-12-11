@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:agilizadiarista/Model/diarista_model.dart';
+import 'package:agilizadiarista/model/diarista_model.dart';
 import 'package:agilizadiarista/controller/diarista_controller.dart';
-import '../Model/agendamento_model.dart';
-import '../Model/login_model.dart';
+import '../model/agendamento_model.dart';
+import '../model/login_model.dart';
 import '../controller/cadastro_controller.dart';
 import 'diarista_detail_view.dart';
 
