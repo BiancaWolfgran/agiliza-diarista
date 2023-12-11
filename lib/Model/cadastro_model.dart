@@ -9,7 +9,7 @@ class UserModel {
   String ufEstado;
   String endereco;
   String complemento;
-  int numeroLote;
+  int? numeroLote;
   String cidade;
   String tipoUsuario;
   List<Agendamento> agendamentos;
@@ -40,7 +40,7 @@ class UserModel {
       ufEstado: json['ufEstado'],
       endereco: json['endereco'],
       complemento: json['complemento'],
-      numeroLote: json['numeroLote'],
+      numeroLote: json['numeroLote'] as int?,
       cidade: json['cidade'],
       tipoUsuario: json['tipoUsuario'],
       agendamentos: (json['agendamentos'] as List<dynamic>? ?? [])
