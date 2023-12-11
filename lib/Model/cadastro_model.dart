@@ -1,3 +1,5 @@
+import 'agendamento_model.dart';
+
 class UserModel {
   String uid;
   String nomeCompleto;
@@ -10,7 +12,7 @@ class UserModel {
   int numeroLote;
   String cidade;
   String tipoUsuario;
-
+  List<Agendamento> agendamentos;
 
   UserModel({
     // Inicializando variaveis
@@ -25,7 +27,27 @@ class UserModel {
     required this.numeroLote,
     required this.cidade,
     required this.tipoUsuario,
+    required this.agendamentos,
   });
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      uid: json['uid'],
+      nomeCompleto: json['nomeCompleto'],
+      cpfCnpj: json['cpfCnpj'],
+      telefone: json['telefone'],
+      cep: json['cep'],
+      ufEstado: json['ufEstado'],
+      endereco: json['endereco'],
+      complemento: json['complemento'],
+      numeroLote: json['numeroLote'],
+      cidade: json['cidade'],
+      tipoUsuario: json['tipoUsuario'],
+      agendamentos: (json['agendamentos'] as List<dynamic>? ?? [])
+          .map((agendamentoJson) => Agendamento.fromJson(agendamentoJson as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -40,6 +62,7 @@ class UserModel {
       'lote': numeroLote,
       'cidade': cidade,
       'tipoUsuario': tipoUsuario,
+      'agendamentos': List<dynamic>.from(agendamentos.map((x) => x.toJson())),
     };
   }
 }

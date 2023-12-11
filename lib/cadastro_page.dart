@@ -17,7 +17,7 @@ class CadastroPage extends StatefulWidget {
 }
 
 class _CadastroPageState extends State<CadastroPage> {
-  String tipoUsuario = "Parceiro"; // Valor inicial
+  String tipoUsuario = "Cliente"; // Valor inicial
   final CadastroController _controller = CadastroController();
 
   final nomeCompletoController = TextEditingController();
@@ -57,6 +57,7 @@ class _CadastroPageState extends State<CadastroPage> {
       complemento: complementoController.text,
       cidade: cidadeController.text,
       tipoUsuario: tipoUsuario,
+      agendamentos: [],
     );
     try {
       await _controller.registrar(newUser);
@@ -66,7 +67,7 @@ class _CadastroPageState extends State<CadastroPage> {
       // Redirecionar para a página apropriada com base no tipo de cadastro
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => tipoUsuario == "Parceiro" ? AgendamentosEDiaristasView() : const ClienteHomePage()),
+        MaterialPageRoute(builder: (context) => tipoUsuario == "Cliente" ? AgendamentosEDiaristasView() : const ClienteHomePage()),
       );
     } catch (e) {
       // Mostrar mensagem de erro
