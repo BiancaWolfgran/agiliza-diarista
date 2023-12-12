@@ -1,4 +1,5 @@
 import 'package:agilizadiarista/model/diarista_model.dart';
+import 'package:agilizadiarista/view/agendar_view.dart';
 import 'package:flutter/material.dart';
 
 class DiaristaDetailView extends StatelessWidget {
@@ -31,6 +32,16 @@ class DiaristaDetailView extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AgendarView(diarista: diarista)),
+          );
+        },
+        icon: Icon(Icons.calendar_today),
+        label: Text('Agendar'),
       ),
     );
   }
