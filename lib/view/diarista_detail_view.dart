@@ -6,8 +6,12 @@ import 'package:flutter/material.dart';
 
 class DiaristaDetailView extends StatelessWidget {
   final Diarista diarista;
+  final Function() onAgendamentoAdded;
 
-  DiaristaDetailView({Key? key, required this.diarista}) : super(key: key);
+  DiaristaDetailView({
+    Key? key,
+    required this.diarista,
+    required this.onAgendamentoAdded}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +43,12 @@ class DiaristaDetailView extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            // MaterialPageRoute(builder: (context) => AgendarView(diarista: diarista)),
             MaterialPageRoute(
                 builder: (context) => AgendarView(
                     diarista: diarista,
                     userId: LoginModel().getCurrentUserId() ?? "",
-                    cadastroController: CadastroController())),
+                    cadastroController: CadastroController(),
+                    onAgendamentoAdded: onAgendamentoAdded)),
           );
         },
         icon: Icon(Icons.calendar_today),

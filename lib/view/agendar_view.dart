@@ -8,12 +8,14 @@ class AgendarView extends StatefulWidget {
   final Diarista diarista;
   final String userId;
   final CadastroController cadastroController;
+  final Function() onAgendamentoAdded;
 
   AgendarView({
     Key? key,
     required this.diarista,
     required this.userId,
     required this.cadastroController,
+    required this.onAgendamentoAdded,
   }) : super(key: key);
 
   @override
@@ -99,7 +101,28 @@ class _AgendarViewState extends State<AgendarView> {
                 // Call the method to add the Agendamento
                 await widget.cadastroController.addAgendamento(widget.userId, newAgendamento);
 
-                // Handle successful addition (e.g., show a confirmation or navigate away)
+                // After successful addition
+                widget.onAgendamentoAdded();
+
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Tudo pronto!"),
+                      content: Text("Agora é só aguardar a confirmação!"),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text("Ok"),
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the dialog
+                            Navigator.of(context).pop(); // Close the AgendarDetailView screen
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
               } catch (e) {
                 // Handle errors here
               }
