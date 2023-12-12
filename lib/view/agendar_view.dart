@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import '../controller/cadastro_controller.dart';
+import '../model/agendamento_model.dart';
 import '../model/diarista_model.dart';
 import 'package:intl/intl.dart';
 
 class AgendarView extends StatefulWidget {
   final Diarista diarista;
+  final String userId;
+  final CadastroController cadastroController;
 
-  AgendarView({Key? key, required this.diarista}) : super(key: key);
+  AgendarView({
+    Key? key,
+    required this.diarista,
+    required this.userId,
+    required this.cadastroController,
+  }) : super(key: key);
 
   @override
   _AgendarViewState createState() => _AgendarViewState();
@@ -76,8 +85,24 @@ class _AgendarViewState extends State<AgendarView> {
         child: Padding(
           padding: EdgeInsets.all(10.0),
           child: ElevatedButton(
-            onPressed: () {
-              // Add your scheduling logic here
+            onPressed: () async {
+              try {
+                // Create the new Agendamento object
+                Agendamento newAgendamento = Agendamento(
+                  idDiarista: widget.diarista.id,
+                  data: DateFormat('yyyy-MM-dd').format(selectedDate),
+                  horario: selectedTime.format(context),
+                  confirmado: false,
+                  nomeDiarista: widget.diarista.nome,
+                );
+
+                // Call the method to add the Agendamento
+                await widget.cadastroController.addAgendamento(widget.userId, newAgendamento);
+
+                // Handle successful addition (e.g., show a confirmation or navigate away)
+              } catch (e) {
+                // Handle errors here
+              }
             },
             child: Text('Agendar'),
           ),

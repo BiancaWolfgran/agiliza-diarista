@@ -1,4 +1,6 @@
+import 'package:agilizadiarista/controller/cadastro_controller.dart';
 import 'package:agilizadiarista/model/diarista_model.dart';
+import 'package:agilizadiarista/model/login_model.dart';
 import 'package:agilizadiarista/view/agendar_view.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +39,12 @@ class DiaristaDetailView extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AgendarView(diarista: diarista)),
+            // MaterialPageRoute(builder: (context) => AgendarView(diarista: diarista)),
+            MaterialPageRoute(
+                builder: (context) => AgendarView(
+                    diarista: diarista,
+                    userId: LoginModel().getCurrentUserId() ?? "",
+                    cadastroController: CadastroController())),
           );
         },
         icon: Icon(Icons.calendar_today),

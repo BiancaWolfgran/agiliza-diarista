@@ -5,6 +5,28 @@ import '../model/agendamento_model.dart';
 class CadastroController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<void> addAgendamento(String userId, Agendamento newAgendamento) async {
+    try {
+      DocumentReference userDocRef = _firestore.collection('users').doc(userId);
+
+      await _firestore.runTransaction((transaction) async {
+        DocumentSnapshot userSnapshot = await transaction.get(userDocRef);
+
+        if (!userSnapshot.exists) {
+          throw Exception("User not found");
+        }
+
+        UserModel user = UserModel.fromJson(userSnapshot.data() as Map<String, dynamic>);
+        List<Agendamento> updatedAgendamentos = List.from(user.agendamentos)..add(newAgendamento);
+
+        transaction.update(userDocRef, {'agendamentos': updatedAgendamentos.map((a) => a.toJson()).toList()});
+      });
+    } catch (e) {
+      print("Error adding agendamento: $e");
+      rethrow;
+    }
+  }
+
   Future<void> registrar(UserModel user) async {
     try {
       // Salvando os dados do usuário no Firestore
