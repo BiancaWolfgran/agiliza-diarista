@@ -28,11 +28,11 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
     }
   }
 
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   _refreshAgendamentos(); // Refetch the agendamentos
-  // }
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _refreshAgendamentos();
+  }
 
   @override
   void initState() {
@@ -51,11 +51,20 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agendamentos e Diaristas'),
+        title: Text('Olá, ${loginModel.getCurrentUserName() ?? ""}',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400)),
+        backgroundColor: Colors.teal.shade200,
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start
           children: [
+            SizedBox(height: 8),
+            Padding(
+              padding: EdgeInsets.only(left: 16.0),
+              child: Text("Agendamentos", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400)),
+            ),
+            // SizedBox(height: 8),
             FutureBuilder<List<Agendamento>>(
               future: futureAgendamentos,
               builder: (context, snapshot) {
@@ -71,10 +80,24 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         var agendamento = snapshot.data![index];
-                        return ListTile(
-                          title: Text("Agendamento com ${agendamento.nomeDiarista}"),
-                          subtitle: Text("${agendamento.data} às ${agendamento.horario}\n${agendamento.confirmado ? "Confirmado" : "Aguardando confirmação"}"),
+                        return Padding(
+                          padding: EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white, // Background color
+                              borderRadius: BorderRadius.circular(8), // Optional: rounded corners
+                              // Add more decoration properties if needed
+                            ),
+                            child: ListTile(
+                              title: Text("Agendamento com ${agendamento.nomeDiarista}"),
+                              subtitle: Text("${agendamento.data} às ${agendamento.horario}\n${agendamento.confirmado ? "Confirmado" : "Aguardando confirmação"}"),
+                            ),
+                          ),
                         );
+                        // return ListTile(
+                        //   title: Text("Agendamento com ${agendamento.nomeDiarista}"),
+                        //   subtitle: Text("${agendamento.data} às ${agendamento.horario}\n${agendamento.confirmado ? "Confirmado" : "Aguardando confirmação"}"),
+                        // );
                       },
                     );
                   } else {
@@ -86,8 +109,11 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
               },
             ),
             SizedBox(height: 8),
-            Text("É dia de faxina?", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
+            Padding(
+              padding: EdgeInsets.only(left: 16.0),
+              child: Text("É dia de faxina?", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400)),
+            ),
+            // SizedBox(height: 8),
             FutureBuilder<List<Diarista>>(
               future: futureDiaristas,
               builder: (context, snapshot) {
@@ -102,21 +128,31 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       var diarista = snapshot.data![index];
-                      return ListTile(
-                        leading: Image.network(diarista.urlFotoPerfil),
-                        title: Text(diarista.nome),
-                        subtitle: Text("${diarista.cidade}, ${diarista.uf}\nAvaliação: ${diarista.avaliacao}\n${diarista.sobre}"),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DiaristaDetailView(
-                                  diarista: diarista,
-                                  onAgendamentoAdded: () {
-                                    _refreshAgendamentos();
-                                  })),
-                          );
-                        },
+                      return Padding(
+                        padding: EdgeInsets.only(left: 16, top: 8, right: 16, bottom: 8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white, // Background color
+                            borderRadius: BorderRadius.circular(8), // Optional: rounded corners
+                            // Add more decoration properties if needed
+                          ),
+                          child: ListTile(
+                            leading: Image.network(diarista.urlFotoPerfil),
+                            title: Text(diarista.nome),
+                            subtitle: Text("${diarista.cidade}, ${diarista.uf}\nAvaliação: ${diarista.avaliacao}\n${diarista.sobre}"),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DiaristaDetailView(
+                                        diarista: diarista,
+                                        onAgendamentoAdded: () {
+                                          _refreshAgendamentos();
+                                        })),
+                              );
+                            },
+                          ),
+                        ),
                       );
                     },
                   );
@@ -128,6 +164,7 @@ class _AgendamentosEDiaristasViewState extends State<AgendamentosEDiaristasView>
           ],
         ),
       ),
+      backgroundColor: Colors.grey.shade100,
     );
   }
 }

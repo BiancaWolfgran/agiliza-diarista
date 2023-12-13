@@ -18,6 +18,7 @@ class DiaristaDetailView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(diarista.nome),
+        backgroundColor: Colors.teal.shade200,
       ),
       body: SingleChildScrollView(  // Use SingleChildScrollView
         child: Padding(
@@ -26,15 +27,16 @@ class DiaristaDetailView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Image.network(diarista.urlFotoPerfil),
-              Text("Nome: ${diarista.nome}"),
               Text("Avaliação: ${diarista.avaliacao}"),
-              Text("Cidade: ${diarista.cidade}, ${diarista.uf}"),
-              Text("Sobre: ${diarista.sobre}"),
-              Text("Comentários:"),
+              Text("${diarista.cidade}, ${diarista.uf}"),
+              Text("\n${diarista.sobre}"),
+              Text("\nComentários:",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400)),
               ...diarista.comentarios.map((comentario) => ListTile(
                 title: Text(comentario.nomeComentador),
                 subtitle: Text(comentario.comentario),
               )).toList(),
+              SizedBox(height: 64),
             ],
           ),
         ),
@@ -53,6 +55,7 @@ class DiaristaDetailView extends StatelessWidget {
         },
         icon: Icon(Icons.calendar_today),
         label: Text('Agendar'),
+        backgroundColor: Colors.teal.shade100,
       ),
     );
   }

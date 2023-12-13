@@ -11,6 +11,10 @@ class LoginModel {
     return _auth.currentUser?.uid;
   }
 
+  String? getCurrentUserName() {
+    return _auth.currentUser?.displayName;
+  }
+
   Future<User?> signInWithGoogle() async {
     final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
     if (googleAccount == null) {

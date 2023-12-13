@@ -56,19 +56,18 @@ class _AgendarViewState extends State<AgendarView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Agendar'),
+        backgroundColor: Colors.teal.shade200,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Agendar diária com ${widget.diarista.nome}', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            Text('Agendar diária com ${widget.diarista.nome}',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400)),
+            SizedBox(height: 8),
             Image.network(widget.diarista.urlFotoPerfil), // Diarista photo
             SizedBox(height: 8),
-            // Text(widget.diarista.nome, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)), // Diarista name
-            // SizedBox(height: 4),
-            Text("Avaliação: ${widget.diarista.avaliacao}"), // Diarista rating
-            SizedBox(height: 20),
             ListTile(
               title: Text("Data: ${DateFormat('dd/MM/yyyy').format(selectedDate)}"),
               trailing: Icon(Icons.keyboard_arrow_down),
@@ -128,8 +127,13 @@ class _AgendarViewState extends State<AgendarView> {
               }
             },
             child: Text('Agendar'),
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.grey.shade900,
+              backgroundColor: Colors.teal.shade100, // Foreground (text & icon) color
+            ),
           ),
         ),
+        color: Colors.white,
       ),
     );
   }
